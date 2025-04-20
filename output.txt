@@ -1,0 +1,85 @@
+(base) dummyUser@dummyUsers-MacBook-Air 5_Reflexive_MAS % python main.py
+/Users/dummyUser/anaconda3/lib/python3.11/site-packages/langchain/chat_models/__init__.py:33: LangChainDeprecationWarning: Importing chat models from langchain is deprecated. Importing from langchain will no longer be supported as of langchain==0.2.0. Please import from langchain-community instead:
+
+`from langchain_community.chat_models import ChatOpenAI`.
+
+To install langchain-community run `pip install -U langchain-community`.
+  warnings.warn(
+/Users/dummyUser/anaconda3/lib/python3.11/site-packages/langchain/chat_models/__init__.py:33: LangChainDeprecationWarning: Importing chat models from langchain is deprecated. Importing from langchain will no longer be supported as of langchain==0.2.0. Please import from langchain-community instead:
+
+`from langchain_community.chat_models import ChatOpenAI`.
+
+To install langchain-community run `pip install -U langchain-community`.
+  warnings.warn(
+/Users/dummyUser/Documents/Learning/AgenticAI/5_Reflexive_MAS/main.py:3: LangChainDeprecationWarning: Importing get_openai_callback from /Users/dummyUser/anaconda3/lib/python3.11/site-packages/langchain/callbacks/__init__.py is deprecated. Please replace deprecated imports:
+
+>> from /Users/dummyUser/anaconda3/lib/python3.11/site-packages/langchain/callbacks/__init__.py import get_openai_callback
+
+with new imports of:
+
+>> from langchain_community.callbacks.manager import get_openai_callback
+You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+  from langchain.callbacks import get_openai_callback
+/Users/dummyUser/Documents/Learning/AgenticAI/5_Reflexive_MAS/main.py:6: LangChainDeprecationWarning: The class `ChatOpenAI` was deprecated in LangChain 0.0.10 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-openai package and should be used instead. To use it run `pip install -U :class:`~langchain-openai` and import as `from :class:`~langchain_openai import ChatOpenAI``.
+  llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo",
+📌 User Request: Write a function to check if a number is prime
+
+🔧 Step 1: Planner Agent...
+/Users/dummyUser/Documents/Learning/AgenticAI/5_Reflexive_MAS/main.py:15: LangChainDeprecationWarning: The method `BaseChatModel.__call__` was deprecated in langchain-core 0.1.7 and will be removed in 1.0. Use :meth:`~invoke` instead.
+  return llm(messages).content
+1. Define the function with a parameter for the number to be checked.
+2. Check if the number is less than 2, return False as prime numbers are greater than 1.
+3. Iterate from 2 to the square root of the number (rounded up) to check for factors.
+4. If the number is divisible by any number in the range, return False as it is not a prime number.
+5. If no factors are found, return True as the number is a prime number.
+
+💻 Step 2: Coder Agent (Initial Attempt)...
+```python
+import math
+
+def is_prime(number):
+    if number < 2:
+        return False
+    
+    for i in range(2, math.isqrt(number) + 1):
+        if number % i == 0:
+            return False
+    
+    return True
+```
+
+🧐 Critic Agent (Attempt 1)...
+1. The code is well-written and follows PEP 8 styling conventions.
+2. The function `is_prime` correctly checks if a number is prime or not.
+3. The use of `math.isqrt(number)` is efficient for finding the square root of the number.
+
+Improvement suggestions:
+1. It would be good to add some comments to explain the logic behind the prime number checking algorithm for better understanding.
+2. Consider adding input validation to ensure that the input is a positive integer.
+
+Overall, the code is good and can be APPROVED.
+
+✅ Code approved by Critic. Final version:
+```python
+import math
+
+def is_prime(number):
+    if number < 2:
+        return False
+    
+    for i in range(2, math.isqrt(number) + 1):
+        if number % i == 0:
+            return False
+    
+    return True
+```
+
+📊 Token Usage Summary:
+Tokens Used: 540
+	Prompt Tokens: 266
+		Prompt Tokens Cached: 0
+	Completion Tokens: 274
+		Reasoning Tokens: 0
+Successful Requests: 3
+Total Cost (USD): $0.0009470000000000001
+(base) dummyUser@dummyUsers-MacBook-Air 5_Reflexive_MAS % 
